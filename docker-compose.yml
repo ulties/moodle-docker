@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: moodle
+      MYSQL_USER: moodleuser
+      MYSQL_PASSWORD: moodlepass
+    volumes:
+      - moodle_db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - moodle-network
+
+  moodle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      #- moodle:/var/www/html
+      - ./moodle_data:/var/www/moodledata
+    environment:
+      MOODLE_DB_TYPE: mysqli
+      MOODLE_DB_HOST: db
+      MOODLE_DB_NAME: moodle
+      MOODLE_DB_USER: moodleuser
+      MOODLE_DB_PASSWORD: moodlepass
+    depends_on:
+      - db
+    networks:
+      - moodle-network
+
+volumes:
+  moodle_db:
+  moodle_data:
+
+networks:
+  moodle-network:
