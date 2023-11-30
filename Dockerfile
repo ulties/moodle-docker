@@ -35,4 +35,7 @@ RUN echo "max_input_vars = 10000" >> /usr/local/etc/php/conf.d/docker-php-max-va
 # PHP opcode caching improves performance and lowers memory requirements, OPcache extension is recommended and fully supported.
 RUN docker-php-ext-install opcache
 
+# Copy config
+COPY config.php /var/www/html/config.php
+
 EXPOSE 80

@@ -22,7 +22,6 @@ services:
     ports:
       - '80:80'
     volumes:
-      #- moodle:/var/www/html
       - ./moodle_data:/var/www/moodledata
     environment:
       MOODLE_DB_TYPE: mysqli
@@ -30,6 +29,8 @@ services:
       MOODLE_DB_NAME: moodle
       MOODLE_DB_USER: moodleuser
       MOODLE_DB_PASSWORD: moodlepass
+      MOODLE_URL: http://localhost:8009
+      MOODLE_SSLPROXY: false
     depends_on:
       - db
     networks:
