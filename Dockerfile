@@ -41,7 +41,7 @@ COPY config.php /var/www/html/config.php
 EXPOSE 80
 
 # Copy the entry script
-#COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 # Set the script as the entry point
-#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
