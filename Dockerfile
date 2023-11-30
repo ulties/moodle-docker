@@ -40,8 +40,14 @@ COPY config.php /var/www/html/config.php
 
 EXPOSE 80
 
+# Fix permissions
+CMD chown -R www-data:www-data /var/www/moodledata
+
 # Copy the entry script
 COPY entrypoint.sh /entrypoint.sh
 
 # Set the script as the entry point
 ENTRYPOINT ["/entrypoint.sh"]
+
+# Keep the default CMD of the base image
+CMD ["apache2-foreground"]

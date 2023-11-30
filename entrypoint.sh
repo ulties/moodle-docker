@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Set permissions for moodledata
+# Your custom command
 chown -R www-data:www-data /var/www/moodledata
 
-# Then execute the command provided as arguments to the script
-exec "$@"
+# Execute the default entrypoint of the base image
+exec docker-php-entrypoint "$@"
