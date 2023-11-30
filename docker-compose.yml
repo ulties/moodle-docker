@@ -29,6 +29,7 @@ services:
       MOODLE_DB_NAME: moodle
       MOODLE_DB_USER: moodleuser
       MOODLE_DB_PASSWORD: moodlepass
+      MOODLE_DB_PREFIX: mdl_
       MOODLE_URL: http://localhost:8009
       MOODLE_SSLPROXY: false
     depends_on:
